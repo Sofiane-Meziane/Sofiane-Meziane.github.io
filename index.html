@@ -305,27 +305,54 @@
       </div>
     </section>
 
-    <!-- ════ SKILLS (BENTO GRID) ════ -->
-    <section
-      id="skills"
-      class="py-16 md:py-24 px-6 md:px-12 bg-white/40 dark:bg-slate-900/40 border-y border-slate-200 dark:border-slate-800/50"
-    >
-      <div class="max-w-[1400px] mx-auto">
-        <div class="reveal mb-16 max-w-2xl">
+    <!-- ════ SKILLS ════ -->
+    <section id="skills" class="skills-section">
+      <div class="skills-container">
+        <div class="skills-heading reveal">
+          <p class="skills-kicker">Compétences</p>
           <h2
-            class="text-3xl md:text-4xl font-display font-semibold"
             data-i18n="skills_title"
           >
             Ma stack technique
           </h2>
+          <p>
+            Des outils orientés vision par ordinateur, intelligence
+            artificielle et ingénierie logicielle.
+          </p>
         </div>
 
-        <div
-          class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 reveal"
-          style="animation-delay: 0.1s"
-          id="skills-grid"
-        >
-          <!-- Rendered purely via JS for conciseness -->
+        <div class="skills-grid reveal">
+          <article class="skill-card">
+            <h3>Computer Vision &amp; Deep Learning</h3>
+            <div class="skill-tags">
+              <span>PyTorch</span><span>OpenCV</span><span>YOLO</span>
+              <span>CNNs</span><span>Transfer Learning</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3>Data Science &amp; Machine Learning</h3>
+            <div class="skill-tags">
+              <span>Python</span><span>NumPy</span><span>Pandas</span>
+              <span>Scikit-Learn</span><span>Matplotlib</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3>Ingénierie Logicielle &amp; Systèmes</h3>
+            <div class="skill-tags">
+              <span>C / C++</span><span>Java</span><span>Linux (Bash)</span>
+              <span>POO</span><span>Design Patterns</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3>Données &amp; Outils de Développement</h3>
+            <div class="skill-tags">
+              <span>SQL (MySQL)</span><span>Git / GitHub</span>
+              <span>Anaconda</span><span>VS Code</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
