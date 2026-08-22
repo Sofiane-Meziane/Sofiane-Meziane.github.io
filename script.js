@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  document.documentElement.classList.add("js");
+
   // 1. Translations
   const LANG = {
     fr: {
@@ -28,23 +30,19 @@
       skill_se: "Ingénierie logicielle & systèmes",
       skill_data: "Données & outils de développement",
       projects_title: "Ce que j'ai construit",
-      stat_projects: "Projets",
-      stat_langs: "Langages",
       view_code: "Voir le code",
       edu_title: "Formation",
       edu_current: "En cours",
-      edu_present: "Présent",
-      edu_graduated: "Diplômé",
-      edu_master: "Master IA",
+      edu_signal_master: "Master 1 Traitement du signal et des images",
+      edu_signal_master_period: "2026 — 2027",
+      edu_signal_uni: "Université du Littoral Côte d'Opale — France",
+      edu_ai_master: "Master 1 Intelligence Artificielle",
+      edu_ai_master_period: "2025 — 2026",
+      edu_ai_uni: "Université de Bejaia — Algérie",
       edu_licence: "Licence Informatique",
       edu_bac: "Baccalauréat",
-      edu_master_period: "2025 — Présent",
       edu_licence_period: "2022 — 2025",
       edu_bac_period: "2019 — 2022",
-      edu_desc1: "Intelligence Artificielle",
-      edu_desc2: "Sciences Informatiques",
-      edu_desc3: "Filière Techniques Mathématiques",
-      edu_uni: "Université de Bejaia — Algérie",
       edu_hs: "Lycée Lala Fatma N'soumer — Algérie",
       contact_title: "Travaillons<br>ensemble",
       contact_desc:
@@ -76,23 +74,19 @@
       skill_se: "Software Engineering & Systems",
       skill_data: "Data & Development Tools",
       projects_title: "What I've built",
-      stat_projects: "Projects",
-      stat_langs: "Languages",
       view_code: "View code",
       edu_title: "Education",
       edu_current: "Ongoing",
-      edu_present: "Present",
-      edu_graduated: "Graduated",
-      edu_master: "Master's in AI",
+      edu_signal_master: "Master's in Signal and Image Processing",
+      edu_signal_master_period: "2026 — 2027",
+      edu_signal_uni: "University of the Littoral Opal Coast — France",
+      edu_ai_master: "Master's in Artificial Intelligence",
+      edu_ai_master_period: "2025 — 2026",
+      edu_ai_uni: "University of Bejaia — Algeria",
       edu_licence: "BSc in Computer Science",
       edu_bac: "High School Diploma",
-      edu_master_period: "2025 — Present",
       edu_licence_period: "2022 — 2025",
       edu_bac_period: "2019 — 2022",
-      edu_desc1: "Artificial Intelligence",
-      edu_desc2: "Computer Science",
-      edu_desc3: "Technical Mathematics Track",
-      edu_uni: "University of Bejaia — Algeria",
       edu_hs: "Lala Fatma N'soumer High School — Algeria",
       contact_title: "Let's work<br>together",
       contact_desc:
@@ -147,11 +141,36 @@
     applyTheme();
   });
 
-  // 3. Dynamic Rendering Helpers (to save space)
-  const d_url = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/";
+  // 3. Dynamic Rendering Helpers
+  const deviconBaseUrl = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/";
+
+  function escapeHTML(value) {
+    return String(value ?? "").replace(
+      /[&<>'"]/g,
+      (character) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "'": "&#39;",
+          '"': "&quot;",
+        })[character],
+    );
+  }
+
+  function getRepositoryUrl(value) {
+    try {
+      const url = new URL(value);
+      return url.protocol === "https:" && url.hostname === "github.com"
+        ? url.href
+        : "https://github.com/Sofiane-Meziane";
+    } catch {
+      return "https://github.com/Sofiane-Meziane";
+    }
+  }
 
   // Marquee
-  const m_techs = [
+  const technologies = [
     { n: "Python", i: "python/python-original.svg" },
     { n: "TensorFlow", i: "tensorflow/tensorflow-original.svg" },
     { n: "OpenCV", i: "opencv/opencv-original.svg" },
@@ -163,14 +182,14 @@
     { n: "MySQL", i: "mysql/mysql-original.svg" },
   ];
   document.getElementById("tech-marquee").innerHTML = [
-    ...m_techs,
-    ...m_techs,
-    ...m_techs,
+    ...technologies,
+    ...technologies,
+    ...technologies,
   ]
     .map(
       (t) =>
         `<div class="flex flex-row items-center justify-center gap-2 px-5 py-2 bg-white dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-md hover:border-sky-500/50 hover:scale-105">
-                <img src="${d_url}${t.i}" class="w-5 h-5 object-contain" alt=""><span class="font-medium text-slate-700 dark:text-slate-200 text-sm leading-none pt-[1px]">${t.n}</span>
+          <img src="${deviconBaseUrl}${t.i}" class="w-5 h-5 object-contain" alt=""><span class="font-medium text-slate-700 dark:text-slate-200 text-sm leading-none pt-[1px]">${escapeHTML(t.n)}</span>
             </div>`,
     )
     .join("");
@@ -191,14 +210,6 @@
     "Horizon-Auto": "Fullstack",
     "Ping-Pong": "Game",
     FireVision: "Deep Learning",
-  };
-  const TECH = {
-    LucidDrive: ["Python", "OpenCV", "MediaPipe"],
-    Bladiway: ["Flutter", "Dart", "Firebase"],
-    LaptopExpert: ["Python", "Streamlit", "Scikit-learn"],
-    "Horizon-Auto": ["Java", "MySQL", "Swing"],
-    "Ping-Pong": ["C", "Raylib"],
-    FireVision: ["Python", "YOLO", "PyTorch"],
   };
   const EN_DESC = {
     LaptopExpert:
@@ -235,7 +246,7 @@
 
   function renderProjects(repos) {
     const list = document.getElementById("projects-list");
-    const sortedRepos = repos.sort((a, b) => {
+    const sortedRepos = [...repos].sort((a, b) => {
       const indexA = PROJECT_ORDER.indexOf(a.name);
       const indexB = PROJECT_ORDER.indexOf(b.name);
       return indexA - indexB;
@@ -243,8 +254,7 @@
     list.innerHTML = sortedRepos
       .map((r) => {
         const img = IMG[r.name],
-          typ = TYPE[r.name] || "Project",
-          tcs = TECH[r.name] || [r.language || ""];
+          typ = TYPE[r.name] || "Project";
         const customDates = PROJECT_DATES[r.name];
         const dat = customDates
           ? lang === "fr"
@@ -259,9 +269,9 @@
             ? EN_DESC[r.name]
             : r.description || "";
         return `
-                <a href="${r.html_url}" target="_blank" class="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl md:rounded-[1.75rem] overflow-hidden shadow-sm md:hover:shadow-lg md:hover:-translate-y-1 transition-transform duration-300 flex flex-col md:group-hover:border-slate-300 dark:md:group-hover:border-slate-600">
+                <a href="${escapeHTML(getRepositoryUrl(r.html_url))}" target="_blank" rel="noopener noreferrer" class="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl md:rounded-[1.75rem] overflow-hidden shadow-sm md:hover:shadow-lg md:hover:-translate-y-1 transition-transform duration-300 md:group-hover:border-slate-300 dark:md:group-hover:border-slate-600">
                     <div class="h-36 sm:h-44 bg-slate-100 dark:bg-slate-950 border-b border-slate-200/50 dark:border-slate-800/50 relative overflow-hidden">
-                        ${img ? `<img src="${img}" loading="lazy" decoding="async" class="w-full h-full object-cover transform scale-100 md:group-hover:scale-105 transition-transform duration-700" alt="${r.name}" onerror="this.style.display='none'">` : ""}
+                        ${img ? `<img src="${img}" loading="lazy" decoding="async" class="w-full h-full object-cover transform scale-100 md:group-hover:scale-105 transition-transform duration-700" alt="${escapeHTML(r.name)}">` : ""}
                         ${!img ? `<div class="w-full h-full flex items-center justify-center text-slate-400 dark:text-slate-600"><svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>` : ""}
                     </div>
                     <div class="px-5 py-4 md:px-6 md:py-5 flex-1 flex flex-col">
@@ -269,14 +279,11 @@
                             <span class="px-2 py-[2px] rounded text-[9px] font-bold tracking-wider uppercase bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">${typ}</span>
                             <span class="text-[11px] font-medium text-slate-400 dark:text-slate-500">${dat}</span>
                         </div>
-                        <h3 class="text-base md:text-lg font-bold text-slate-900 dark:text-white mb-1.5 md:group-hover:text-sky-500 transition-colors tracking-tight">${r.name}</h3>
-                        <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 line-clamp-2 md:line-clamp-3 leading-relaxed mb-4 flex-1">${desc}</p>
+                        <h3 class="text-base md:text-lg font-bold text-slate-900 dark:text-white mb-1.5 md:group-hover:text-sky-500 transition-colors tracking-tight">${escapeHTML(r.name)}</h3>
+                        <p class="text-xs md:text-sm text-slate-600 dark:text-slate-400 line-clamp-2 md:line-clamp-3 leading-relaxed mb-4 flex-1">${escapeHTML(desc)}</p>
                         <div class="flex items-center justify-between mt-auto pt-3 border-t border-slate-100 dark:border-slate-800/50">
                             <div class="flex items-center gap-1.5 font-semibold text-xs text-slate-900 dark:text-white md:group-hover:text-sky-500 transition-colors">
                                 ${LANG[lang].view_code} <svg class="w-3.5 h-3.5 transform md:group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                            </div>
-                            <div class="flex items-center gap -space-x-1.5">
-                                ${tcs.map((t) => `<span class="h-7 w-7 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-50 dark:border-slate-900 flex items-center justify-center text-[9px] font-bold text-slate-600 dark:text-slate-300 shadow-sm z-10 md:hover:z-20 md:hover:scale-110 transition-transform cursor-help" title="${t}">${t.substring(0, 2)}</span>`).join("")}
                             </div>
                         </div>
                     </div>
@@ -299,17 +306,13 @@
         json = await res.json();
         sessionStorage.setItem("github_repos", JSON.stringify(json));
       }
-      const ex = ["Sofiane-Meziane", "portfolio"];
       json = json.filter(
         (r) =>
           r.description &&
           r.description.trim() &&
-          !ex.includes(r.name) &&
           !r.fork &&
           PROJECT_ORDER.includes(r.name),
       );
-
-      // Statistiques globales retirées à la demande de l'utilisateur.
 
       window.loadedRepos = json;
       renderProjects(json);

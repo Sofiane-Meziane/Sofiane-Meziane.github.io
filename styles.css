@@ -815,6 +815,15 @@ img {
 .hover\:underline:hover {
   text-decoration: underline;
 }
+.hover\:bg-slate-100:hover {
+  background: #f1f5f9;
+}
+.hover\:shadow-md:hover {
+  box-shadow: 0 4px 6px -1px #0000001a;
+}
+.hover\:border-sky-500\/50:hover {
+  border-color: #0ea5e980;
+}
 .hover\:scale-110:hover {
   transform: scale(1.1);
 }
@@ -879,6 +888,7 @@ img {
 }
 .line-clamp-2 {
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -966,6 +976,17 @@ img {
   opacity: 1;
   transform: none;
 }
+.js .reveal {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
 .marquee {
   animation: marquee 30s linear infinite;
 }
@@ -1003,6 +1024,18 @@ img {
 @keyframes shimmer {
   to {
     background-position: 400px 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 @media (min-width: 640px) {
@@ -1074,6 +1107,10 @@ img {
   }
   .md\:text-4xl {
     font-size: 2.25rem;
+  }
+  .md\:line-clamp-3 {
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
   }
   .md\:text-6xl {
     font-size: 3.75rem;
