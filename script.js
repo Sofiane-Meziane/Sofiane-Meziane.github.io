@@ -12,15 +12,14 @@
       nav_edu: "Parcours",
       nav_cv: "CV",
       hero_status: "Disponible pour un stage",
-      hero_desc_1: "Étudiant en",
-      hero_desc_2:
-        ". Je conçois des solutions à l'intersection du machine learning, de la vision par ordinateur et de l'ingénierie logicielle.",
+      hero_desc:
+        'Fort d\'un parcours complet en <strong class="font-medium text-slate-900 dark:text-white">Informatique, IA et Traitement du Signal et des Images</strong>, j\'apporte une vision globale pour traiter, analyser et valoriser des données complexes au service de projets techniques exigeants. <strong class="font-medium text-slate-900 dark:text-white">À la recherche d\'un stage de 4 mois dès avril 2027.</strong>',
       hero_cta: "Découvrir mes projets",
       about_title: "À propos",
       about_p1:
-        "Passionné par l'intelligence artificielle et le développement logiciel, je construis des solutions qui connectent la théorie à l'impact concret. Mon parcours mêle <strong class='font-medium text-slate-900 dark:text-white'>machine learning</strong>, <strong class='font-medium text-slate-900 dark:text-white'>vision par ordinateur</strong> et <strong class='font-medium text-slate-900 dark:text-white'>ingénierie logicielle</strong>.",
+        "Mon parcours s'appuie sur une progression académique complémentaire : <strong class=\"font-medium text-slate-900 dark:text-white\">une Licence en Informatique</strong> pour les bases en génie logiciel et systèmes, <strong class=\"font-medium text-slate-900 dark:text-white\">un Master 1 en Intelligence Artificielle</strong> axé sur la modélisation et l'apprentissage automatique, et <strong class=\"font-medium text-slate-900 dark:text-white\">actuellement un Master 1 en Traitement du Signal et des Images</strong> pour l'analyse de données complexes et multidimensionnelles.<br><br>Cette triple culture me permet d'intervenir sur toute la chaîne technique — de l'architecture logicielle et l'ingénierie de données (Python, SQL, Data Warehouse) jusqu'à la modélisation (Machine/Deep Learning, filtrage numérique). <strong class=\"font-medium text-slate-900 dark:text-white\">Mes projets académiques et mon immersion au sein de la DSI d'un grand groupe industriel m'ont permis d'élargir mes horizons et de mieux appréhender les enjeux réels du secteur.</strong>",
       about_p2:
-        "Je suis actuellement en <strong class='font-medium text-slate-900 dark:text-white'>Master Intelligence Artificielle</strong> en Algérie, et je recherche un stage pour appliquer mes compétences à des problèmes réels.",
+        "Je suis actuellement <strong class=\"font-medium text-slate-900 dark:text-white\">à la recherche d'un stage de 4 à 6 mois à partir d'avril 2027</strong> (ainsi qu'une <strong class=\"font-medium text-slate-900 dark:text-white\">alternance en M2</strong>), au sein d'une équipe travaillant sur des problématiques <strong class=\"font-medium text-slate-900 dark:text-white\">de Data, d'IA, de Signal/Image ou d'Ingénierie Logicielle.</strong>",
       skills_kicker: "Compétences",
       skills_title: "Ma stack technique",
       skills_desc:
@@ -40,7 +39,7 @@
       edu_ai_master_period: "2025 — 2026",
       edu_ai_uni: "Université de Bejaia — Algérie",
       edu_licence: "Licence Informatique",
-      edu_bac: "Baccalauréat",
+      edu_bac: "Baccalauréat — Techniques Mathématiques",
       edu_licence_period: "2022 — 2025",
       edu_bac_period: "2019 — 2022",
       edu_hs: "Lycée Lala Fatma N'soumer — Algérie",
@@ -56,15 +55,14 @@
       nav_edu: "Education",
       nav_cv: "CV",
       hero_status: "Available for internship",
-      hero_desc_1: "Student in",
-      hero_desc_2:
-        ". I build solutions at the intersection of machine learning, computer vision, and software engineering.",
+      hero_desc:
+        'Backed by a comprehensive background in <strong class="font-medium text-slate-900 dark:text-white">Computer Science, AI, and Signal & Image Processing</strong>, I bring a holistic perspective to processing, analyzing, and extracting value from complex data for demanding technical projects. <strong class="font-medium text-slate-900 dark:text-white">Seeking a 4-month internship starting April 2027.</strong>',
       hero_cta: "Explore projects",
       about_title: "About me",
       about_p1:
-        "Passionate about artificial intelligence and software engineering, I connect theory to real-world impact. My background combines <strong class='font-medium text-slate-900 dark:text-white'>machine learning</strong>, <strong class='font-medium text-slate-900 dark:text-white'>computer vision</strong>, and <strong class='font-medium text-slate-900 dark:text-white'>software development</strong>.",
+        'My background is built on a complementary academic path, a <strong class="font-medium text-slate-900 dark:text-white">Bachelor\'s degree in Computer Science</strong> for software engineering and systems foundations, a <strong class="font-medium text-slate-900 dark:text-white">Master\'s (M1) in Artificial Intelligence</strong> focused on modeling and machine learning, and <strong class="font-medium text-slate-900 dark:text-white">currently a Master\'s (M1) in Signal and Image Processing</strong> for complex, multidimensional data analysis.<br><br>This triple skill set allows me to operate across the entire technical pipeline, from software architecture and data engineering (Python, SQL, Data Warehouse) to modeling (Machine/Deep Learning, digital filtering). <strong class="font-medium text-slate-900 dark:text-white">My academic projects and immersion within the IT department of a major industrial group broadened my horizons and gave me a clear understanding of real world industry challenges.</strong>',
       about_p2:
-        "I am currently pursuing a <strong class='font-medium text-slate-900 dark:text-white'>Master's in AI</strong> in Algeria, looking for an internship to apply my skills.",
+        'I am currently <strong class="font-medium text-slate-900 dark:text-white">seeking a 4-month internship starting April 2027</strong> (as well as a <strong class="font-medium text-slate-900 dark:text-white">Master 2 work-study program</strong>) within a team working on <strong class="font-medium text-slate-900 dark:text-white">Data, AI, Signal/Image Processing, or Software Engineering</strong> challenges.',
       skills_kicker: "Skills",
       skills_title: "Tech Stack",
       skills_desc:
@@ -84,7 +82,7 @@
       edu_ai_master_period: "2025 — 2026",
       edu_ai_uni: "University of Bejaia — Algeria",
       edu_licence: "BSc in Computer Science",
-      edu_bac: "High School Diploma",
+      edu_bac: "High School Diploma in Technical Mathematics",
       edu_licence_period: "2022 — 2025",
       edu_bac_period: "2019 — 2022",
       edu_hs: "Lala Fatma N'soumer High School — Algeria",
